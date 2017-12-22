@@ -79,8 +79,8 @@ def webhook():
 def processRequest(req):
    if req.get("result").get("action") == "ShowAllApps":
        return  {
-                    "speech": speech,
-                    "displayText": speech,
+                    "speech": "Rachit",
+                    "displayText": "Rachit",
                     # "data": data,
                     # "contextOut": [],
                     "source": "apiai-weather-webhook-sample"

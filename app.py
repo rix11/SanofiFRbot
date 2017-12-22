@@ -32,6 +32,31 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 
+import websocket
+from websocket import create_connection
+import pprint
+
+from websocket import create_connection
+
+socketOptions = {"ca_certs": "client.pem", "keyfile": "client_key.pem", "certfile": "root.pem"}
+ws = create_connection("ws://localhost:4848/app/")
+data = json.dumps({
+                    "handle": -1,"method": 'GetDocList',"outKey": -1,"params": {},"id": 4
+})
+ws.send(data)
+result = ws.recv()
+data = json.loads(result)
+speechList=list()
+for item in data['result']['qDocList']:
+    docName=item.get("qDocName")
+    speechList.append(docName)
+
+speech='\n'.join(speechList)
+print (speech)
+
+ws.close()
+
+
 
 @app.route('/webhook', methods=['POST'])
 def webhook():

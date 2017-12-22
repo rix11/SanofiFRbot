@@ -77,7 +77,7 @@ def webhook():
 
 
 def processRequest(req):
-   if req.get("result").get("action") == "showAllApps":
+   if req.get("result").get("action") == "ShowAllApps":
        return  {
                     "speech": speech,
                     "displayText": speech,
@@ -87,7 +87,7 @@ def processRequest(req):
                 }
    else:
        return {
-
+            "Your request have no associated action!"
        }
    # baseurl = "https://query.yahooapis.com/v1/public/yql?"
    # yql_query = makeYqlQuery(req)
